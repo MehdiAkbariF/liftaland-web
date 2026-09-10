@@ -16,7 +16,7 @@ export function HeroSection() {
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-[38px] font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.3] mb-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-[30px] lg:text-nowrap font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.3] mb-3">
             معرفی خدمات تخصصی مهندسی و مرجع معرفی قطعات و تجهیزات آسانسور
           </h1>
 
