@@ -41,10 +41,19 @@ export interface PanelOrder {
 export interface PanelServiceLog {
   id: string;
   serviceTitle: string;
+  type: "monthly" | "emergency" | "standard";
   technicianName: string;
+  technicianLicense: string;
+  technicianPhone: string;
   date: string;
+  time: string;
   status: "completed" | "scheduled";
   checklistScore: string;
+  motorRoomStatus: string;
+  shaftStatus: string;
+  cabinStatus: string;
+  notes: string;
+  signedByManager: boolean;
 }
 
 export interface PanelTicket {

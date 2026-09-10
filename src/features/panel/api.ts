@@ -1,4 +1,4 @@
-import { PanelData, PanelOrder } from "./types";
+import { PanelData, PanelOrder, PanelServiceLog } from "./types";
 
 export const CUSTOMER_ORDERS: PanelOrder[] = [
   {
@@ -67,6 +67,60 @@ export const CUSTOMER_ORDERS: PanelOrder[] = [
   },
 ];
 
+export const CUSTOMER_SERVICE_LOGS: PanelServiceLog[] = [
+  {
+    id: "srv-log-1",
+    serviceTitle: "سرویس و پایش دوره‌ای ماهانه (تیرماه ۱۴۰۳)",
+    type: "monthly",
+    technicianName: "مهندس علیرضا حسینی",
+    technicianLicense: "پروانه اشتغال مهندسی: ۹۱۴۸-تهران",
+    technicianPhone: "۰۹۱۲۱۱۱۰۰۰۰",
+    date: "۱۴۰۳/۰۴/۰۲",
+    time: "۱۰:۱۵ الی ۱۱:۴۵",
+    status: "completed",
+    checklistScore: "۴۲ از ۴۲ نقطه کنترلی تایید شد (۱۰۰٪ سلامت عملیاتی)",
+    motorRoomStatus: "لنت‌های ترمز رگلاژ شد، سطح روغن گیربکس بررسی و آمپراژ موتور ۵.۲ آمپر ثبت گردید.",
+    shaftStatus: "ریل‌ها تمیزکاری و روغن‌دان‌ها شارژ شدند، کشش سیم‌بکسل‌ها یکنواخت است.",
+    cabinStatus: "سنسور پرده‌ای نوری و سیستم نجات اضطراری Blackout با موفقیت تست گردید.",
+    notes: "آسانسور در شرایط ایمن و پایدار تحویل مدیر مجتمع شد؛ نوبت بعدی سرویس برای اوایل مرداد برنامه‌ریزی گردید.",
+    signedByManager: true,
+  },
+  {
+    id: "srv-log-2",
+    serviceTitle: "آزمون ممیزی سالانه و تمدید گواهی استاندارد ادواری",
+    type: "standard",
+    technicianName: "مهندس احسان طاهری (ناظر ارشد لیفتالند)",
+    technicianLicense: "پروانه نظارت استاندارد: STD-412",
+    technicianPhone: "۰۹۱۲۲۲۲۰۰۰۰",
+    date: "۱۴۰۲/۱۱/۲۰",
+    time: "۰۹:۰۰ الی ۱۳:۳۰",
+    status: "completed",
+    checklistScore: "قبولی در ممیزی بازرس رسمی شرکت استاندارد کشوری",
+    motorRoomStatus: "حفاظ کامل فلکه، روشنایی ۲۰۰ لوکس و کپسول CO2 تایید شد.",
+    shaftStatus: "تست سقوط و عملکرد فک‌های ترمز ایمنی (پاراشوت) با بار نامی تایید گردید.",
+    cabinStatus: "کلید استپ اضطراری و اینترکام کابین به موتورخانه تایید شد.",
+    notes: "کد رهگیری گواهینامه استاندارد ملی صادر و در سامانه ثبت گردید. اعتبار تا ۱۴۰۳/۱۱/۲۰.",
+    signedByManager: true,
+  },
+  {
+    id: "srv-log-3",
+    serviceTitle: "سرویس و پایش دوره‌ای ماهانه (خرداد ۱۴۰۳)",
+    type: "monthly",
+    technicianName: "مهندس علیرضا حسینی",
+    technicianLicense: "پروانه اشتغال مهندسی: ۹۱۴۸-تهران",
+    technicianPhone: "۰۹۱۲۱۱۱۰۰۰۰",
+    date: "۱۴۰۳/۰۳/۰۴",
+    time: "۱۱:۰۰ الی ۱۲:۳۰",
+    status: "completed",
+    checklistScore: "۴۲ از ۴۲ نقطه کنترل شد (تعویض کفشک هرزگرد انجام شد)",
+    motorRoomStatus: "پایش حرارتی سیم‌پیچ موتورخانه با ترموویژن انجام شد (دمای نرمال ۵۱ درجه).",
+    shaftStatus: "کفشک‌های لغزشی وزنه تعادل تعویض و لقی‌های اضافه حذف گردید.",
+    cabinStatus: "روشنایی اضطراری و شستی‌های کابین نرمال هستند.",
+    notes: "قطعه کفشک از انبار مرکزی با تخفیف اشتراک ماهانه تامین و تعویض شد.",
+    signedByManager: true,
+  },
+];
+
 export const MOCK_PANEL_DATA: PanelData = {
   passport: {
     buildingName: "مجتمع مسکونی سروستان",
@@ -89,16 +143,7 @@ export const MOCK_PANEL_DATA: PanelData = {
     daysToNextService: 4,
   },
   recentOrders: CUSTOMER_ORDERS.slice(0, 1),
-  recentServices: [
-    {
-      id: "srv-1",
-      serviceTitle: "سرویس دوره‌ای ماهانه (چک‌لیست ۴۲ گانه)",
-      technicianName: "مهندس حسینی (پروانه ۹۱۴)",
-      date: "۱۴۰۳/۰۴/۰۲",
-      status: "completed",
-      checklistScore: "۴۲ از ۴۲ نقطه کنترل شد (بدون عیب)",
-    },
-  ],
+  recentServices: CUSTOMER_SERVICE_LOGS.slice(0, 1),
   recentTickets: [
     {
       id: "tkt-1",
@@ -119,4 +164,11 @@ export async function getCustomerOrders(statusFilter?: string): Promise<PanelOrd
     return CUSTOMER_ORDERS.filter((o) => o.status === statusFilter);
   }
   return CUSTOMER_ORDERS;
+}
+
+export async function getCustomerServices(typeFilter?: string): Promise<PanelServiceLog[]> {
+  if (typeFilter && typeFilter !== "all") {
+    return CUSTOMER_SERVICE_LOGS.filter((s) => s.type === typeFilter);
+  }
+  return CUSTOMER_SERVICE_LOGS;
 }
