@@ -6,6 +6,7 @@ import { PartsSynergy } from "@/features/home/components/parts-synergy";
 import { ArticlesSection } from "@/features/home/components/articles-section";
 import { SocialCommunity } from "@/features/home/components/social-community";
 import { TrustCompliance } from "@/features/home/components/trust-compliance";
+import { PlatformOverview } from "@/features/home/components/platform-overview";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -35,7 +36,10 @@ export default function HomePage() {
       {/* ۸. استانداردهای ایمنی و تضامین حقوقی و بیمه */}
       <TrustCompliance />
 
-      {/* ۹. بخش اقدام پایانی (Final CTA با اصلاح فونت و چیدمان موبایل) */}
+      {/* ۹. معرفی تفصیلی پلتفرم و مرجع سئو */}
+      <PlatformOverview />
+
+      {/* ۱۰. بخش اقدام پایانی (Final CTA) */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl border-2 border-safety-500 bg-industrial-900 text-white dark:bg-industrial-900 p-6 sm:p-10 text-center relative overflow-hidden shadow-lg">
           <div className="max-w-2xl mx-auto relative z-10">
@@ -49,7 +53,6 @@ export default function HomePage() {
               مهندسان شیفت لیفتالند آماده اعزام کارشناس جهت ممیزی رایگان وضعیت استاندارد و بررسی ارتعاشات کابین ساختمان شما هستند.
             </p>
             
-            {/* دکمه‌های اقدام با تفکیک دو سطری در موبایل و فونت استاندارد */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
               <a
                 href="tel:02188880000"
