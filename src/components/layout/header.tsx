@@ -35,54 +35,52 @@ export function Header() {
                   LIFTALAND
                 </span>
                 <span className="text-[10px] text-safety-600 dark:text-safety-400 font-semibold tracking-wide">
-                  معرفی خدمات و قطعات آسانسور
+                  سامانه خدمات و قطعات آسانسور
                 </span>
               </div>
             </Link>
 
             {/* ناوبری دسکتاپ */}
             <nav className="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 pr-4">
-              <Link
-                href="/products"
-                className="hover:text-slate-950 dark:hover:text-white transition-colors"
-              >
-                کاتالوگ و معرفی قطعات
+              <Link href="/products" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                کاتالوگ قطعات
               </Link>
-              <Link
-                href="/services"
-                className="hover:text-slate-950 dark:hover:text-white transition-colors"
-              >
-                معرفی خدمات مهندسی
+              <Link href="/services" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                خدمات مهندسی
               </Link>
-              <Link
-                href="/about"
-                className="hover:text-slate-950 dark:hover:text-white transition-colors"
-              >
-                درباره لیفتالند
+              <Link href="/projects" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                نمونه‌کارها
               </Link>
-              <Link
-                href="/contact"
-                className="hover:text-slate-950 dark:hover:text-white transition-colors"
-              >
-                تماس و استعلام
+              <Link href="/articles" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                دانشنامه
+              </Link>
+              <Link href="/about" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                درباره ما
+              </Link>
+              <Link href="/contact" className="hover:text-slate-950 dark:hover:text-white transition-colors">
+                تماس با ما
               </Link>
             </nav>
           </div>
 
-          {/* سمت چپ: تغییر تم، تماس اضطراری و دکمه مشاوره */}
+          {/* سمت چپ: تغییر تم، دکمه ورود/پنل و تماس */}
           <div className="flex items-center gap-2.5">
-            <div className="hidden sm:flex flex-col text-left pl-3 border-l border-slate-200 dark:border-industrial-800 text-[11px]">
-              <span className="text-slate-400">مرکز مشاوره فنی:</span>
-              <span className="font-bold text-slate-800 dark:text-slate-200 dir-ltr">
-                ۰۲۱ - ۸۸۸۸۰۰۰۰
-              </span>
-            </div>
-
             <ThemeToggle />
+
+            {/* دکمه ورود / پنل کاربری */}
+            <Link
+              href="/auth/login"
+              className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg border border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-900 hover:bg-slate-100 dark:hover:bg-industrial-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-colors shadow-2xs"
+            >
+              <svg className="w-4 h-4 text-safety-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <span className="hidden sm:inline">ورود / پنل</span>
+            </Link>
 
             <Link
               href="/services/preventive-maintenance"
-              className="hidden md:inline-flex items-center justify-center text-xs font-bold px-4 h-9 rounded-md bg-safety-500 hover:bg-safety-600 text-industrial-950 transition-colors shadow-sm"
+              className="hidden md:inline-flex items-center justify-center text-xs font-bold px-4 h-9 rounded-lg bg-safety-500 hover:bg-safety-600 text-industrial-950 transition-colors shadow-2xs"
             >
               درخواست کارشناسی
             </Link>
@@ -91,7 +89,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* کامپوننت Drawer موبایل */}
+      {/* کامپوننت کشویی موبایل */}
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </>
   );

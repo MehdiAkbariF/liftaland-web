@@ -14,13 +14,13 @@ const PRODUCT_CATEGORIES = [
   { label: "تابلوهای فرمان و درایو VVVF", href: "/products?category=controller" },
   { label: "سیستم‌های ایمنی، ترمز و پاراشوت", href: "/products?category=safety" },
   { label: "درب‌های اتوماتیک و نیمه‌اتوماتیک", href: "/products?category=doors" },
-  { label: "سیم‌بکسل، تراول‌کابل و قطعات معلق", href: "/products?category=suspension" },
 ];
 
 const SERVICE_LINKS = [
   { label: "سرویس و بازرسی دوره‌ای ماهانه", href: "/services/preventive-maintenance" },
-  { label: "نوسازی و بازسازی آسانسور (Modernization)", href: "/services/modernization" },
+  { label: "رفع خرابی اضطراری ۲۴ ساعته", href: "/services/emergency-repair" },
   { label: "اخذ تاییدیه استاندارد ادواری و اولیه", href: "/services/standard-certification" },
+  { label: "نوسازی و بازسازی آسانسور (Modernization)", href: "/services/modernization" },
 ];
 
 export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
@@ -42,7 +42,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       {/* Overlay پس‌زمینه */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
       />
 
       {/* منوی کشویی راست‌چین */}
@@ -55,7 +55,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                 L
               </div>
               <span className="font-extrabold text-sm text-slate-900 dark:text-white">
-                منوی ناوبری لیفتالند
+                منوی لیفتالند
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -70,13 +70,33 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             </div>
           </div>
 
+          {/* بنر اختصاصی ورود به پنل در بالای منوی کشویی */}
+          <div className="p-4 pb-0">
+            <Link
+              href="/auth/login"
+              onClick={onClose}
+              className="flex items-center justify-between p-3 rounded-xl border border-safety-500/40 bg-safety-50/40 dark:bg-safety-950/20 text-slate-900 dark:text-white"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="w-8 h-8 rounded-lg bg-safety-500 text-industrial-950 flex items-center justify-center font-bold text-xs">
+                  👤
+                </span>
+                <div>
+                  <span className="text-xs font-bold block">ورود به پنل کاربری</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400">پیگیری سفارش و سوابق سرویس</span>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-safety-600 dark:text-safety-400">←</span>
+            </Link>
+          </div>
+
           {/* محتوای منو */}
-          <div className="p-4 space-y-6">
-            {/* معرفی و کاتالوگ قطعات */}
+          <div className="p-4 space-y-5">
+            {/* قطعات */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-slate-900 dark:text-white">
-                  معرفی و فروش قطعات
+                  معرفی و خرید قطعات
                 </span>
                 <Link
                   href="/products"
@@ -101,8 +121,8 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
               </ul>
             </div>
 
-            {/* معرفی خدمات تخصصی */}
-            <div className="pt-4 border-t border-slate-100 dark:border-industrial-800">
+            {/* خدمات */}
+            <div className="pt-3 border-t border-slate-100 dark:border-industrial-800">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-slate-900 dark:text-white">
                   خدمات مهندسی و بازرسی
@@ -129,27 +149,55 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                 ))}
               </ul>
             </div>
+
+            {/* لینک‌های راهنما */}
+            <div className="pt-3 border-t border-slate-100 dark:border-industrial-800 space-y-1 text-xs font-medium">
+              <Link
+                href="/projects"
+                onClick={onClose}
+                className="block py-2 px-3 rounded text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-900"
+              >
+                پرونده پروژه‌ها و نمونه‌کارها
+              </Link>
+              <Link
+                href="/articles"
+                onClick={onClose}
+                className="block py-2 px-3 rounded text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-900"
+              >
+                دانشنامه و مقالات مهندسی
+              </Link>
+              <Link
+                href="/about"
+                onClick={onClose}
+                className="block py-2 px-3 rounded text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-900"
+              >
+                درباره لیفتالند
+              </Link>
+              <Link
+                href="/contact"
+                onClick={onClose}
+                className="block py-2 px-3 rounded text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-900"
+              >
+                تماس و فوریت‌ها
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* پایین منو: اطلاعات تماس و پشتیبانی */}
+        {/* پایین منو: تماس اضطراری */}
         <div className="p-4 border-t border-slate-200 dark:border-industrial-800 bg-slate-50 dark:bg-industrial-900/60">
-          <div className="text-[11px] text-slate-500 dark:text-slate-400 space-y-1.5 mb-3">
+          <div className="text-[11px] text-slate-500 dark:text-slate-400 space-y-1 mb-2">
             <p className="flex items-center justify-between">
-              <span>پشتیبانی مهندسی:</span>
-              <span className="font-bold text-slate-800 dark:text-slate-200">۰۲۱-۸۸۸۸۰۰۰۰</span>
-            </p>
-            <p className="flex items-center justify-between">
-              <span>اورژانس خرابی:</span>
+              <span>اورژانس توقف آسانسور:</span>
               <span className="font-bold text-safety-600 dark:text-safety-400">۰۲۱-۸۸۸۸۰۰۰۱</span>
             </p>
           </div>
           <Link
             href="/contact"
             onClick={onClose}
-            className="w-full h-10 flex items-center justify-center rounded-lg bg-industrial-900 hover:bg-industrial-800 text-white dark:bg-white dark:text-industrial-950 text-xs font-bold transition-colors"
+            className="w-full h-9 flex items-center justify-center rounded-lg bg-industrial-900 hover:bg-industrial-800 text-white dark:bg-white dark:text-industrial-950 text-xs font-bold transition-colors"
           >
-            ثبت درخواست مشاوره فنی
+            تماس با کشیک فنی
           </Link>
         </div>
       </div>

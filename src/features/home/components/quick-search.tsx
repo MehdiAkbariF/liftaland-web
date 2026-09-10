@@ -27,7 +27,7 @@ export function QuickSearch() {
 
   return (
     <div className="w-full">
-      {/* فرم جستجو با پدینگ‌های صریح و بدون تداخل دکمه در RTL */}
+      {/* فرم جستجو با استایل شیشه‌ای مات تیره و کنتراست عالی روی عکس */}
       <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-stretch gap-2">
         <div className="relative flex-1">
           <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
@@ -45,20 +45,20 @@ export function QuickSearch() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="جستجوی پارت‌نامبر، مدل، قطعه (مثال: Sicor MR12، تابلو آریان، پاراشوت...)"
-            className="w-full h-12 pr-11 pl-4 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-industrial-700 bg-white dark:bg-industrial-950 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-safety-500 focus:border-transparent transition-all shadow-sm"
+            className="w-full h-12 pr-11 pl-4 text-xs sm:text-sm rounded-xl border border-white/20 bg-slate-900/80 backdrop-blur-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-safety-500 focus:border-transparent transition-all shadow-inner"
           />
         </div>
         <button
           type="submit"
-          className="h-12 px-6 rounded-lg bg-industrial-900 hover:bg-industrial-800 text-white dark:bg-white dark:text-industrial-950 dark:hover:bg-slate-200 text-xs sm:text-sm font-semibold transition-colors shrink-0 select-none shadow-sm"
+          className="h-12 px-6 rounded-xl bg-safety-500 hover:bg-safety-600 text-industrial-950 text-xs sm:text-sm font-extrabold transition-colors shrink-0 select-none shadow-md"
         >
           جستجوی قطعه
         </button>
       </form>
 
-      {/* میانبرهای سریع تکنسین‌ها */}
+      {/* میانبرهای دسترسی سریع روی پس‌زمینه شیشه‌ای */}
       <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:gap-2">
-        <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+        <span className="text-[11px] text-slate-400 font-medium">
           دسترسی سریع به کاتالوگ:
         </span>
         {SUGGESTED_TAGS.map((tag, idx) => (
@@ -66,7 +66,7 @@ export function QuickSearch() {
             key={idx}
             type="button"
             onClick={() => handleTagClick(tag.query)}
-            className="text-[11px] px-2.5 py-1 rounded-md border border-slate-200 dark:border-industrial-800 bg-slate-100/80 dark:bg-industrial-900/80 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-industrial-700 hover:text-techBlue-600 dark:hover:text-blue-400 transition-colors"
+            className="text-[11px] px-2.5 py-1 rounded-md border border-white/10 bg-white/5 hover:bg-white/15 text-slate-200 hover:text-white transition-all backdrop-blur-xs"
           >
             {tag.label}
           </button>

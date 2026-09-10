@@ -35,18 +35,27 @@ export function BottomNav() {
       ),
     },
     {
-      label: "تماس فنی",
-      href: "/contact",
+      label: "نمونه‌کارها",
+      href: "/projects",
       icon: (active: boolean) => (
         <svg className={`w-5 h-5 ${active ? "text-safety-500" : "text-slate-500 dark:text-slate-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={active ? 2.5 : 1.8} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={active ? 2.5 : 1.8} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+    },
+    {
+      label: "پنل من",
+      href: "/auth/login",
+      icon: (active: boolean) => (
+        <svg className={`w-5 h-5 ${active ? "text-safety-500" : "text-slate-500 dark:text-slate-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={active ? 2.5 : 1.8} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
     },
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-industrial-950/95 backdrop-blur-md border-t border-slate-200 dark:border-industrial-800 h-16 px-4">
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-industrial-950/95 backdrop-blur-md border-t border-slate-200 dark:border-industrial-800 h-16 px-2">
       <div className="h-full flex items-center justify-around">
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href;
@@ -54,7 +63,7 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className="flex flex-col items-center justify-center gap-1 w-16 select-none"
+              className="flex flex-col items-center justify-center gap-1 w-14 select-none"
             >
               {item.icon(isActive)}
               <span

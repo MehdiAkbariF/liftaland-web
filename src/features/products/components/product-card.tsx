@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Product } from "../types";
@@ -9,22 +12,37 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div className="group flex flex-col justify-between rounded-xl border border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-900 overflow-hidden transition-all hover:border-slate-300 dark:hover:border-industrial-700 hover:shadow-xs">
       <div>
-        {/* باکس عکس فشرده و مهندسی با نسبت 16:10 */}
+        {/* باکس عکس فشرده و مهندسی با محافظت در برابر تحریم */}
         <Link
           href={`/products/${product.slug}`}
           className="block relative aspect-[16/10] w-full overflow-hidden bg-slate-100 dark:bg-industrial-950/80 border-b border-slate-100 dark:border-industrial-800/80"
         >
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-            loading="lazy"
-          />
+          {!imageError ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            /* شماتیک وکتوری صنعتی در صورت عدم دسترسی به اینترنت بین‌الملل */
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-industrial-900 dark:to-industrial-950 p-4 text-center">
+              <span className="w-10 h-10 rounded-lg bg-industrial-900/10 dark:bg-white/10 flex items-center justify-center text-lg mb-2">
+                ⚙️
+              </span>
+              <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 font-mono">
+                {product.partNumber}
+              </span>
+              <span className="text-[10px] text-slate-400">شناسنامه پلاک کارخانه</span>
+            </div>
+          )}
           
           {/* برچسب‌های اطلاعاتی روی عکس */}
           <div className="absolute top-2.5 right-2.5 left-2.5 flex items-center justify-between pointer-events-none">
@@ -40,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </Link>
 
-        {/* محتوای فنی کارت با پدینگ متوازن */}
+        {/* محتوای فنی کارت */}
         <div className="p-3.5 sm:p-4">
           <div className="flex items-center justify-between gap-2 mb-2">
             <Badge variant="tech">{product.partNumber}</Badge>
@@ -59,7 +77,7 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.shortDescription}
           </p>
 
-          {/* شاخص‌های فنی فشرده دو ستونی */}
+          {/* شاخص‌های فنی دو ستونی */}
           <div className="grid grid-cols-2 gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-industrial-950/60 border border-slate-100 dark:border-industrial-800/60 text-[11px]">
             {product.specs.slice(0, 2).map((spec, i) => (
               <div key={i} className="flex flex-col">
@@ -73,7 +91,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      {/* قیمت و دکمه با پدینگ استاندارد و بدون Wrap */}
+      {/* قیمت و دکمه بررسی */}
       <div className="p-3.5 sm:p-4 pt-0">
         <div className="pt-2.5 border-t border-slate-100 dark:border-industrial-800/80 flex items-center justify-between gap-2">
           <div>
