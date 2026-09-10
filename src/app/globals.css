@@ -29,10 +29,13 @@
     border-color: var(--border-subtle);
   }
 
+  html, body, input, button, select, textarea {
+    font-family: var(--font-iranyekan), system-ui, -apple-system, sans-serif;
+  }
+
   body {
     background-color: var(--bg-page);
     color: var(--text-main);
-    font-family: var(--font-iranyekan), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

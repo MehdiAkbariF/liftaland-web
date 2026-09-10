@@ -41,8 +41,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-iranyekan)", "system-ui", "tahoma", "sans-serif"],
-        mono: ["Consolas", "Monaco", "Courier New", "monospace"],
+        sans: ["var(--font-iranyekan)", "system-ui", "sans-serif"],
+        mono: ["var(--font-iranyekan)", "monospace"],
       },
     },
   },

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BottomNav } from "@/components/layout/bottom-nav";
 
 const iranYekan = localFont({
   src: [
@@ -29,7 +30,7 @@ const iranYekan = localFont({
 export const metadata: Metadata = {
   title: "لیفتالند | سامانه مهندسی قطعات و خدمات آسانسور",
   description:
-    "مرجع فروش قطعات فنی، موتور، تابلو فرمان و خدمات بازرسی، سرویس و نوسازی استاندارد آسانسور.",
+    "مرجع تخصصی معرفی قطعات فنی، موتور، تابلو فرمان و خدمات استاندارد، سرویس و نوسازی آسانسور.",
 };
 
 export default function RootLayout({
@@ -58,8 +59,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-industrial-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-safety-500 selection:text-black">
         <Header />
-        <main className="flex-1">{children}</main>
+        {/* پدینگ pb-16 برای اطمینان از عدم هم‌پوشانی باتم‌ناو در موبایل */}
+        <main className="flex-1 pb-16 lg:pb-0">{children}</main>
         <Footer />
+        <BottomNav />
       </body>
     </html>
   );
