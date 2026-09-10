@@ -57,7 +57,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-industrial-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-safety-500 selection:text-black">
+      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-industrial-950
+       text-slate-900 dark:text-slate-100 font-sans antialiased
+        selection:bg-safety-500 selection:text-black">
         <Header />
         {/* پدینگ pb-16 برای اطمینان از عدم هم‌پوشانی باتم‌ناو در موبایل */}
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>

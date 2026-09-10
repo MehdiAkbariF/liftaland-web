@@ -13,6 +13,7 @@ export interface Product {
   categoryLabel: string;
   shortDescription: string;
   price: number;
+  image: string;
   isAvailable: boolean;
   standard: string;
   specs: TechnicalSpec[];
