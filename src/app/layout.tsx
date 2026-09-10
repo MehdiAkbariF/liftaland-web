@@ -30,7 +30,18 @@ const iranYekan = localFont({
 export const metadata: Metadata = {
   title: "لیفتالند | سامانه مهندسی قطعات و خدمات آسانسور",
   description:
-    "مرجع تخصصی معرفی قطعات فنی، موتور، تابلو فرمان و خدمات استاندارد، سرویس و نوسازی آسانسور.",
+    "مرجع تخصصی معرفی و تامین قطعات فنی، موتور، تابلو فرمان و خدمات استاندارد، سرویس و نوسازی آسانسور.",
+  // مسدودسازی قطعی ایندکس در تمام موتورهای جستجو
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -57,12 +68,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-industrial-950
-       text-slate-900 dark:text-slate-100 font-sans antialiased
-        selection:bg-safety-500 selection:text-black">
+      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-industrial-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-safety-500 selection:text-black">
         <Header />
-        {/* پدینگ pb-16 برای اطمینان از عدم هم‌پوشانی باتم‌ناو در موبایل */}
-        <main className="flex-1 pb-16 lg:pb-0 ">{children}</main>
+        <main className="flex-1 pb-16 lg:pb-0">{children}</main>
         <Footer />
         <BottomNav />
       </body>
