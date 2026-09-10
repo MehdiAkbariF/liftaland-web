@@ -62,7 +62,7 @@ export default function RootLayout({
         selection:bg-safety-500 selection:text-black">
         <Header />
         {/* پدینگ pb-16 برای اطمینان از عدم هم‌پوشانی باتم‌ناو در موبایل */}
-        <main className="flex-1 pb-16 lg:pb-0">{children}</main>
+        <main className="flex-1 pb-16 lg:pb-0 ">{children}</main>
         <Footer />
         <BottomNav />
       </body>
