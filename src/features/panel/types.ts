@@ -56,12 +56,27 @@ export interface PanelServiceLog {
   signedByManager: boolean;
 }
 
+export interface TicketMessage {
+  id: string;
+  sender: "customer" | "support";
+  senderName: string;
+  senderRole: string;
+  date: string;
+  text: string;
+}
+
 export interface PanelTicket {
   id: string;
+  ticketNumber: string;
   subject: string;
   department: string;
+  priority: "critical" | "high" | "normal";
+  priorityLabel: string;
   status: "open" | "answered" | "closed";
+  statusLabel: string;
+  createdAt: string;
   updatedAt: string;
+  messages: TicketMessage[];
 }
 
 export interface PanelData {

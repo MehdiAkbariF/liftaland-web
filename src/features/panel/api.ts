@@ -1,4 +1,4 @@
-import { PanelData, PanelOrder, PanelServiceLog } from "./types";
+import { PanelData, PanelOrder, PanelServiceLog, PanelTicket } from "./types";
 
 export const CUSTOMER_ORDERS: PanelOrder[] = [
   {
@@ -102,22 +102,68 @@ export const CUSTOMER_SERVICE_LOGS: PanelServiceLog[] = [
     notes: "کد رهگیری گواهینامه استاندارد ملی صادر و در سامانه ثبت گردید. اعتبار تا ۱۴۰۳/۱۱/۲۰.",
     signedByManager: true,
   },
+];
+
+export const CUSTOMER_TICKETS: PanelTicket[] = [
   {
-    id: "srv-log-3",
-    serviceTitle: "سرویس و پایش دوره‌ای ماهانه (خرداد ۱۴۰۳)",
-    type: "monthly",
-    technicianName: "مهندس علیرضا حسینی",
-    technicianLicense: "پروانه اشتغال مهندسی: ۹۱۴۸-تهران",
-    technicianPhone: "۰۹۱۲۱۱۱۰۰۰۰",
-    date: "۱۴۰۳/۰۳/۰۴",
-    time: "۱۱:۰۰ الی ۱۲:۳۰",
-    status: "completed",
-    checklistScore: "۴۲ از ۴۲ نقطه کنترل شد (تعویض کفشک هرزگرد انجام شد)",
-    motorRoomStatus: "پایش حرارتی سیم‌پیچ موتورخانه با ترموویژن انجام شد (دمای نرمال ۵۱ درجه).",
-    shaftStatus: "کفشک‌های لغزشی وزنه تعادل تعویض و لقی‌های اضافه حذف گردید.",
-    cabinStatus: "روشنایی اضطراری و شستی‌های کابین نرمال هستند.",
-    notes: "قطعه کفشک از انبار مرکزی با تخفیف اشتراک ماهانه تامین و تعویض شد.",
-    signedByManager: true,
+    id: "tkt-1",
+    ticketNumber: "TK-4819",
+    subject: "استعلام سازگاری سنسور دورانی انکودر با تابلو آرکد ساختمان",
+    department: "پشتیبانی مهندسی درایو و الکتریکال",
+    priority: "normal",
+    priorityLabel: "عادی",
+    status: "answered",
+    statusLabel: "پاسخ کارشناس ناظر داده شد",
+    createdAt: "۱۴۰۳/۰۴/۲۷ - ساعت ۰۹:۱۵",
+    updatedAt: "امروز - ساعت ۱۰:۳۰",
+    messages: [
+      {
+        id: "m1",
+        sender: "customer",
+        senderName: "علیرضا سلیمانی (مدیر مجتمع سروستان)",
+        senderRole: "کارفرما",
+        date: "۱۴۰۳/۰۴/۲۷ - ساعت ۰۹:۱۵",
+        text: "با سلام؛ در موتورخانه صدای ضعیف سوت از سمت انکودر موتور سیسیور شنیده می‌شود. آیا این انکودر ۱۰۲۴ پالس با درایو آرکد فعلی ساختمان ما تطابق دارد یا نیاز به تعویض کارت انکودر است؟",
+      },
+      {
+        id: "m2",
+        sender: "support",
+        senderName: "مهندس احسان طاهری",
+        senderRole: "سرپرست پشتیبانی تابلو فرمان و درایو",
+        date: "۱۴۰۳/۰۴/۲۷ - ساعت ۱۰:۳۰",
+        text: "با درود خدمت جنابعالی؛ انکودر نصب‌شده روی موتور سیسیور ساختمان شما از نوع افزایشی HTL (پوش‌پول) است که مستقیماً با ترمینال EN1 تابلو آرکد سازگار است. صدای اعلام‌شده معمولاً ناشی از لقی کوپلینگ فلزی است. دستور کارشناسی و آچارکشی برای تکنسین شیفت منطقه صادر شد تا فردا قبل از ظهر به موتورخانه ساختمان مراجعه و صدا را برطرف نماید.",
+      },
+    ],
+  },
+  {
+    id: "tkt-2",
+    ticketNumber: "TK-4702",
+    subject: "درخواست پیش‌فاکتور تعویض لنت ترمز مکانیکی موتورخانه",
+    department: "بازرگانی و استعلام قطعات",
+    priority: "high",
+    priorityLabel: "اولویت بالا",
+    status: "closed",
+    statusLabel: "بسته شده / سفارش ثبت شد",
+    createdAt: "۱۴۰۳/۰۳/۱۲ - ساعت ۱۴:۰۰",
+    updatedAt: "۱۴۰۳/۰۳/۱۴ - ساعت ۱۱:۲۰",
+    messages: [
+      {
+        id: "m3",
+        sender: "customer",
+        senderName: "علیرضا سلیمانی (مدیر مجتمع سروستان)",
+        senderRole: "کارفرما",
+        date: "۱۴۰۳/۰۳/۱۲ - ساعت ۱۴:۰۰",
+        text: "با سلام؛ پیرو گزارش چک‌لیست ماه قبل مبنی بر ضخامت ۳ میلی‌متری لنت‌ها، لطفاً پیش‌فاکتور رسمی جفت لنت اصلی سیسیور را در پنل صادر فرمایید.",
+      },
+      {
+        id: "m4",
+        sender: "support",
+        senderName: "واحد مهندسی فروش لیفتالند",
+        senderRole: "امور مشتریان",
+        date: "۱۴۰۳/۰۳/۱۳ - ساعت ۰۹:۴۵",
+        text: "پیش‌فاکتور رسمی با اعمال تخفیف ۱۰ درصدی اشتراک طلایی ساختمان شما در بخش سفارش‌ها با شماره PRF-77312 صادر و بارگذاری گردید.",
+      },
+    ],
   },
 ];
 
@@ -144,15 +190,7 @@ export const MOCK_PANEL_DATA: PanelData = {
   },
   recentOrders: CUSTOMER_ORDERS.slice(0, 1),
   recentServices: CUSTOMER_SERVICE_LOGS.slice(0, 1),
-  recentTickets: [
-    {
-      id: "tkt-1",
-      subject: "استعلام سازگاری سنسور دورانی انکودر تابلو",
-      department: "پشتیبانی مهندسی درایو",
-      status: "answered",
-      updatedAt: "امروز، ساعت ۱۰:۳۰",
-    },
-  ],
+  recentTickets: CUSTOMER_TICKETS.slice(0, 1),
 };
 
 export async function getPanelData(): Promise<PanelData> {
@@ -171,4 +209,15 @@ export async function getCustomerServices(typeFilter?: string): Promise<PanelSer
     return CUSTOMER_SERVICE_LOGS.filter((s) => s.type === typeFilter);
   }
   return CUSTOMER_SERVICE_LOGS;
+}
+
+export async function getCustomerTickets(statusFilter?: string): Promise<PanelTicket[]> {
+  if (statusFilter && statusFilter !== "all") {
+    return CUSTOMER_TICKETS.filter((t) => t.status === statusFilter);
+  }
+  return CUSTOMER_TICKETS;
+}
+
+export async function getTicketById(id: string): Promise<PanelTicket | undefined> {
+  return CUSTOMER_TICKETS.find((t) => t.id === id);
 }
