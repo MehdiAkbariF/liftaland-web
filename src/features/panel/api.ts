@@ -1,4 +1,71 @@
-import { PanelData } from "./types";
+import { PanelData, PanelOrder } from "./types";
+
+export const CUSTOMER_ORDERS: PanelOrder[] = [
+  {
+    id: "ord-1",
+    orderNumber: "LFT-90214",
+    date: "۱۴۰۳/۰۴/۲۶",
+    status: "shipped",
+    statusLabel: "تحویل به باربری (در حال ارسال)",
+    totalAmount: 34500000,
+    paymentStatus: "paid",
+    shippingCompany: "باربری وطن (شعبه جنوب)",
+    trackingCode: "۹۸۳۱۴۲-VTN",
+    destinationAddress: "تهران، سعادت‌آباد، خیابان سرو غربی، مجتمع مسکونی سروستان",
+    items: [
+      {
+        name: "ترمز ایمنی (پاراشوت) تدریجی دیناتک مدل Qube",
+        partNumber: "DYN-QUBE-2200",
+        brand: "Dynatech (اسپانیا)",
+        quantity: 1,
+        unitPrice: 34500000,
+        slug: "dynatech-qube-safety-gear",
+      },
+    ],
+  },
+  {
+    id: "ord-2",
+    orderNumber: "LFT-89104",
+    date: "۱۴۰۳/۰۳/۱۵",
+    status: "delivered",
+    statusLabel: "تحویل شده به مدیر ساختمان",
+    totalAmount: 88000000,
+    paymentStatus: "paid",
+    shippingCompany: "پیک اکسپرس صنعتی لیفتالند",
+    trackingCode: "DEL-84192",
+    destinationAddress: "تهران، سعادت‌آباد، خیابان سرو غربی، مجتمع مسکونی سروستان",
+    items: [
+      {
+        name: "اینورتر تخصصی آسانسور یاسکاوا L1000A",
+        partNumber: "YAS-L1000-11KW",
+        brand: "Yaskawa (ژاپن)",
+        quantity: 1,
+        unitPrice: 88000000,
+        slug: "yaskawa-l1000a-inverter",
+      },
+    ],
+  },
+  {
+    id: "ord-3",
+    orderNumber: "PRF-77312",
+    date: "۱۴۰۳/۰۴/۲۸",
+    status: "proforma",
+    statusLabel: "پیش‌فاکتور رسمی (در انتظار تایید کارفرما)",
+    totalAmount: 28500000,
+    paymentStatus: "pending",
+    destinationAddress: "تهران، سعادت‌آباد، خیابان سرو غربی، مجتمع مسکونی سروستان",
+    items: [
+      {
+        name: "درب طبقه تمام‌اتوماتیک تلسکوپی ویتور مدل Augusta",
+        partNumber: "WIT-AUG-T2-80",
+        brand: "Wittur (آلمان)",
+        quantity: 1,
+        unitPrice: 28500000,
+        slug: "wittur-augusta-landing-door",
+      },
+    ],
+  },
+];
 
 export const MOCK_PANEL_DATA: PanelData = {
   passport: {
@@ -21,18 +88,7 @@ export const MOCK_PANEL_DATA: PanelData = {
     openTickets: 1,
     daysToNextService: 4,
   },
-  recentOrders: [
-    {
-      id: "ord-1",
-      orderNumber: "LFT-90214",
-      partName: "ترمز ایمنی (پاراشوت) تدریجی دیناتک Qube",
-      partNumber: "DYN-QUBE-2200",
-      amount: 34500000,
-      date: "۱۴۰۳/۰۴/۲۶",
-      status: "shipped",
-      trackingCode: "باربری وطن: ۹۸۳۱۴۲",
-    },
-  ],
+  recentOrders: CUSTOMER_ORDERS.slice(0, 1),
   recentServices: [
     {
       id: "srv-1",
@@ -56,4 +112,11 @@ export const MOCK_PANEL_DATA: PanelData = {
 
 export async function getPanelData(): Promise<PanelData> {
   return MOCK_PANEL_DATA;
+}
+
+export async function getCustomerOrders(statusFilter?: string): Promise<PanelOrder[]> {
+  if (statusFilter && statusFilter !== "all") {
+    return CUSTOMER_ORDERS.filter((o) => o.status === statusFilter);
+  }
+  return CUSTOMER_ORDERS;
 }

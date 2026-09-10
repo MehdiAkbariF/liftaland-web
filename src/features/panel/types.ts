@@ -14,15 +14,28 @@ export interface ElevatorPassport {
   nextServiceDate: string;
 }
 
+export interface OrderProductItem {
+  name: string;
+  partNumber: string;
+  brand: string;
+  quantity: number;
+  unitPrice: number;
+  slug?: string;
+  image?: string;
+}
+
 export interface PanelOrder {
   id: string;
   orderNumber: string;
-  partName: string;
-  partNumber: string;
-  amount: number;
   date: string;
-  status: "processing" | "shipped" | "delivered";
+  status: "processing" | "shipped" | "delivered" | "proforma";
+  statusLabel: string;
+  totalAmount: number;
+  paymentStatus: "paid" | "pending" | "official_invoice";
+  shippingCompany?: string;
   trackingCode?: string;
+  destinationAddress: string;
+  items: OrderProductItem[];
 }
 
 export interface PanelServiceLog {
