@@ -73,7 +73,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           {/* بنر اختصاصی ورود به پنل در بالای منوی کشویی */}
           <div className="p-4 pb-0">
             <Link
-              href="/auth/login"
+              href="/login"
               onClick={onClose}
               className="flex items-center justify-between p-3 rounded-xl border border-safety-500/40 bg-safety-50/40 dark:bg-safety-950/20 text-slate-900 dark:text-white"
             >

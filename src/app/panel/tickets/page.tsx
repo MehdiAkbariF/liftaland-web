@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { PanelSidebar } from "@/features/panel/components/panel-sidebar";
 import { TicketsHeader } from "@/features/panel/components/tickets-header";
@@ -9,7 +9,7 @@ import { NewTicketModal } from "@/features/panel/components/new-ticket-modal";
 import { CUSTOMER_TICKETS } from "@/features/panel/api";
 import { PanelTicket } from "@/features/panel/types";
 
-export default function CustomerTicketsPage() {
+function TicketsContent() {
   const searchParams = useSearchParams();
   const statusFilter = searchParams.get("status") || "all";
 
@@ -92,5 +92,13 @@ export default function CustomerTicketsPage() {
         onCreated={handleCreateTicket}
       />
     </div>
+  );
+}
+
+export default function CustomerTicketsPage() {
+  return (
+    <Suspense fallback={<div className="p-12 text-center text-xs text-slate-500">در حال بارگذاری میز تیکت‌ها...</div>}>
+      <TicketsContent />
+    </Suspense>
   );
 }

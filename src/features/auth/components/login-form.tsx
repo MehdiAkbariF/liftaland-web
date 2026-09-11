@@ -97,7 +97,7 @@ export function LoginForm() {
           L
         </div>
         <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
-          {step === "phone" ? "ورود به پنل کارفرمایان و مدیران ساختمان" : "تایید شماره تلفن همراه"}
+          {step === "phone" ? "ورود به حساب کاربری" : "تایید شماره تلفن همراه"}
         </h2>
         <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           {step === "phone"
@@ -111,7 +111,7 @@ export function LoginForm() {
         <form onSubmit={handlePhoneSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-              شماره تلفن همراه (مدیر ساختمان / خریدار):
+              شماره تلفن همراه 
             </label>
             <div className="relative flex items-center">
               <input

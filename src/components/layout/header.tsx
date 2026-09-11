@@ -69,7 +69,7 @@ export function Header() {
 
             {/* دکمه ورود / پنل کاربری */}
             <Link
-              href="/auth/login"
+              href="/login"
               className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg border border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-900 hover:bg-slate-100 dark:hover:bg-industrial-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-colors shadow-2xs"
             >
               <svg className="w-4 h-4 text-safety-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

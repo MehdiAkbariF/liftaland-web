@@ -12,12 +12,12 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-industrial-950 text-white -mt-2 sm:-mt-4 min-h-[640px] lg:min-h-[720px] flex items-center">
+    <section className="relative w-full overflow-hidden bg-industrial-950 text-white -mt-2 sm:-mt-4 min-h-[640px] lg:min-h-[700px] flex items-center">
       
-      {/* ۱. تصویر پس‌زمینه آسانسور پانورامای شیشه‌ای و شفت مدرن */}
+      {/* ۱. تصویر محلی و پرسرعت آسانسور شیشه‌ای پانوراما (بدون وابستگی به اینترنت خارجی) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?auto=compress&cs=tinysrgb&w=2000"
+          src="/images/hero-elevator.jpg"
           alt="شفت و کابین آسانسور مدرن و تجهیزات حرکتی لیفتالند"
           fill
           priority
@@ -33,7 +33,7 @@ export function HeroSection() {
       {/* ۲. محتوای شناور تمام‌عرض روی تصویر آسانسور */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 flex flex-col justify-between">
         
-        {/* سربرگ هویت و تیتر اصلی: تمام‌عرض و باشکوه در دسکتاپ */}
+        {/* سربرگ هویت و تیتر اصلی */}
         <div className="w-full max-w-5xl mb-8 sm:mb-10">
           <div className="flex flex-wrap items-center gap-2.5 mb-4">
             <Badge variant="warning" className="shadow-xs">
@@ -45,7 +45,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-4xl font-black tracking-tight leading-[1.25] mb-4 text-white drop-shadow-md">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.25] mb-4 text-white drop-shadow-md">
             معرفی خدمات تخصصی مهندسی و مرجع تامین قطعات آسانسور
           </h1>
 
@@ -117,11 +117,10 @@ export function HeroSection() {
 
         </div>
 
-        {/* بخش پایین هیرو: دو ستون متقارن و هماهنگ (باکس سرچ تمام‌عرض + پنل شاخص‌های عملیاتی) */}
+        {/* بخش پایین هیرو: دو ستون متقارن */}
         <div className="pt-6 border-t border-white/20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start w-full">
             
-            {/* ستون راست: باکس جستجوی پارت‌نامبر (تمام‌عرض ستون) */}
             <div className="w-full">
               <h3 className="text-xs font-bold text-slate-200 mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-safety-500" />
@@ -130,7 +129,6 @@ export function HeroSection() {
               <QuickSearch />
             </div>
 
-            {/* ستون چپ: پنل شاخص‌های عملیاتی و تعهدات مهندسی (پرکننده هوشمند و متقارن سمت چپ) */}
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-xl border border-white/15 bg-slate-950/60 backdrop-blur-md">
               {operationalMetrics.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 p-2 rounded-lg bg-white/5 border border-white/5">
@@ -152,7 +150,6 @@ export function HeroSection() {
 
       </div>
 
-      {/* خط جداکننده پایانی بنر */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent absolute bottom-0 left-0 right-0" />
     </section>
   );

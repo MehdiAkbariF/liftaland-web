@@ -23,26 +23,35 @@ export function PanelRecentActivities({
           <span className="text-[11px] text-slate-400 font-mono">RECENT ORDER</span>
         </div>
 
-        {recentOrders.map((order) => (
-          <div key={order.id} className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-900 dark:text-white">
-                {order.partName}
-              </span>
-              <Badge variant="tech">{order.orderNumber}</Badge>
-            </div>
+        {recentOrders.map((order) => {
+          const firstItem = order.items?.[0];
+          return (
+            <div key={order.id} className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-slate-900 dark:text-white">
+                  {firstItem?.name || "سفارش قطعات آسانسور"}
+                </span>
+                <Badge variant="tech">{order.orderNumber}</Badge>
+              </div>
 
-            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-[11px]">
-              <span>پارت‌نامبر: {order.partNumber}</span>
-              <span className="font-bold text-slate-900 dark:text-white">{formatPrice(order.amount)}</span>
-            </div>
+              <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-[11px]">
+                <span>پارت‌نامبر: {firstItem?.partNumber || "-"}</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  {formatPrice(order.totalAmount)}
+                </span>
+              </div>
 
-            <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-industrial-950 border border-slate-100 dark:border-industrial-800 flex items-center justify-between text-[11px]">
-              <span className="text-slate-600 dark:text-slate-300">وضعیت: تحویل به باربری</span>
-              <span className="font-mono text-safety-600 dark:text-safety-400 font-bold">{order.trackingCode}</span>
+              <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-industrial-950 border border-slate-100 dark:border-industrial-800 flex items-center justify-between text-[11px]">
+                <span className="text-slate-600 dark:text-slate-300">
+                  وضعیت: {order.statusLabel}
+                </span>
+                <span className="font-mono text-safety-600 dark:text-safety-400 font-bold">
+                  {order.trackingCode || "در حال آماده‌سازی"}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* آخرین گزارش سرویس دوره‌ای */}

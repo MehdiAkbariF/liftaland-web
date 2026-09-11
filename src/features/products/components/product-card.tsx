@@ -17,9 +17,9 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group flex flex-col justify-between rounded-xl border border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-900 overflow-hidden transition-all hover:border-slate-300 dark:hover:border-industrial-700 hover:shadow-xs">
       <div>
-        {/* باکس عکس فشرده و مهندسی با محافظت در برابر تحریم */}
         <Link
           href={`/products/${product.slug}`}
+          aria-label={`مشاهده مشخصات فنی و خرید ${product.name}`}
           className="block relative aspect-[16/10] w-full overflow-hidden bg-slate-100 dark:bg-industrial-950/80 border-b border-slate-100 dark:border-industrial-800/80"
         >
           {!imageError ? (
@@ -32,7 +32,6 @@ export function ProductCard({ product }: ProductCardProps) {
               onError={() => setImageError(true)}
             />
           ) : (
-            /* شماتیک وکتوری صنعتی در صورت عدم دسترسی به اینترنت بین‌الملل */
             <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-industrial-900 dark:to-industrial-950 p-4 text-center">
               <span className="w-10 h-10 rounded-lg bg-industrial-900/10 dark:bg-white/10 flex items-center justify-center text-lg mb-2">
                 ⚙️
@@ -44,7 +43,6 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
           
-          {/* برچسب‌های اطلاعاتی روی عکس */}
           <div className="absolute top-2.5 right-2.5 left-2.5 flex items-center justify-between pointer-events-none">
             <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white/90 dark:bg-industrial-900/90 text-slate-900 dark:text-white backdrop-blur-xs shadow-2xs">
               {product.brand}
@@ -58,7 +56,6 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </Link>
 
-        {/* محتوای فنی کارت */}
         <div className="p-3.5 sm:p-4">
           <div className="flex items-center justify-between gap-2 mb-2">
             <Badge variant="tech">{product.partNumber}</Badge>
@@ -77,7 +74,6 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.shortDescription}
           </p>
 
-          {/* شاخص‌های فنی دو ستونی */}
           <div className="grid grid-cols-2 gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-industrial-950/60 border border-slate-100 dark:border-industrial-800/60 text-[11px]">
             {product.specs.slice(0, 2).map((spec, i) => (
               <div key={i} className="flex flex-col">
@@ -91,7 +87,6 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      {/* قیمت و دکمه بررسی */}
       <div className="p-3.5 sm:p-4 pt-0">
         <div className="pt-2.5 border-t border-slate-100 dark:border-industrial-800/80 flex items-center justify-between gap-2">
           <div>
@@ -103,6 +98,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
           <Link
             href={`/products/${product.slug}`}
+            aria-label={`بررسی مشخصات فنی و استعلام ${product.name}`}
             className="inline-flex items-center justify-center text-xs font-bold px-4 h-9 rounded-lg bg-industrial-900 hover:bg-industrial-800 text-white dark:bg-white dark:text-industrial-950 dark:hover:bg-slate-200 transition-colors shrink-0 shadow-2xs whitespace-nowrap"
           >
             بررسی مشخصات
