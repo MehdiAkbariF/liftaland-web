@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   liftaland-app:
-    container_name: liftaland-web
+    container_name: liftaland-main
     build:
       context: .
       dockerfile: Dockerfile
@@ -18,3 +18,10 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+
+    networks:
+      - main-net
+
+networks:
+  main-net:
+    external: true
