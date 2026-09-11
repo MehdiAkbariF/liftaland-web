@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { QuickSearch } from "./quick-search";
-import { Badge } from "@/components/ui/badge";
 
 export function HeroSection() {
   const operationalMetrics = [
@@ -12,9 +11,9 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-industrial-950 text-white -mt-2 sm:-mt-4 min-h-[640px] lg:min-h-[700px] flex items-center">
+    <section className="relative w-full overflow-hidden bg-industrial-950 text-white -mt-2 sm:-mt-4 min-h-[600px] lg:min-h-[680px] flex items-center">
       
-      {/* ۱. تصویر محلی و پرسرعت آسانسور شیشه‌ای پانوراما (بدون وابستگی به اینترنت خارجی) */}
+      {/* ۱. تصویر محلی و پرسرعت آسانسور شیشه‌ای پانوراما */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-elevator.jpg"
@@ -33,23 +32,13 @@ export function HeroSection() {
       {/* ۲. محتوای شناور تمام‌عرض روی تصویر آسانسور */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 flex flex-col justify-between">
         
-        {/* سربرگ هویت و تیتر اصلی */}
-        <div className="w-full max-w-5xl mb-8 sm:mb-10">
-          <div className="flex flex-wrap items-center gap-2.5 mb-4">
-            <Badge variant="warning" className="shadow-xs">
-              مرجع تخصصی صنعت آسانسور ایران
-            </Badge>
-            <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-200 bg-black/40 px-2.5 py-0.5 rounded-md backdrop-blur-md border border-white/15">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>پایش اصالت قطعات EN 81-20 / EN 81-50</span>
-            </div>
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.25] mb-4 text-white drop-shadow-md">
+        {/* سربرگ هویت و تیتر اصلی: تمام‌عرض در دسکتاپ بدون محدودیت */}
+        <div className="w-full mb-8 sm:mb-10">
+          <h1 className="w-full text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.25] mb-4 text-white drop-shadow-md">
             معرفی خدمات تخصصی مهندسی و مرجع تامین قطعات آسانسور
           </h1>
 
-          <p className="text-xs sm:text-base text-slate-200 leading-relaxed max-w-3xl font-medium drop-shadow-xs">
+          <p className="w-full text-xs sm:text-base lg:text-[17px] text-slate-200 leading-relaxed font-medium drop-shadow-xs">
             لیفتالند نقطه اتصال مهندسان، شرکت‌های آسانسور و مدیران ساختمان است؛ با تمرکز بر دو محور اصلی: **معرفی و انتخاب قطعات استاندارد با پارت‌نامبر سازنده** و **آشنایی با خدمات مهندسی بازرسی، نگهداری و استانداردسازی.**
           </p>
         </div>
@@ -117,10 +106,11 @@ export function HeroSection() {
 
         </div>
 
-        {/* بخش پایین هیرو: دو ستون متقارن */}
+        {/* بخش پایین هیرو: دو ستون متقارن تمام‌عرض */}
         <div className="pt-6 border-t border-white/20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start w-full">
             
+            {/* ستون راست: باکس جستجوی پارت‌نامبر */}
             <div className="w-full">
               <h3 className="text-xs font-bold text-slate-200 mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-safety-500" />
@@ -129,6 +119,7 @@ export function HeroSection() {
               <QuickSearch />
             </div>
 
+            {/* ستون چپ: پنل شاخص‌های عملیاتی و تعهدات مهندسی */}
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-xl border border-white/15 bg-slate-950/60 backdrop-blur-md">
               {operationalMetrics.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 p-2 rounded-lg bg-white/5 border border-white/5">
