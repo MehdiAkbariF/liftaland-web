@@ -3,7 +3,7 @@ name: liftaland-front
 
 services:
   liftaland-app:
-    container_name: liftaland-main
+    container_name: liftaland-front
     build:
       context: .
       dockerfile: Dockerfile
