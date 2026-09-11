@@ -1,8 +1,7 @@
 version: '3.8'
-name: liftaland-front
 
 services:
-  liftaland-app:
+  liftaland-front:
     container_name: liftaland-front
     build:
       context: .
